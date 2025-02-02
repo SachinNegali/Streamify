@@ -2,6 +2,7 @@ import DonutChart from "@/components/charts/donutChart";
 import GrowthChart from "@/components/charts/growthChart";
 import ListChart from "@/components/charts/listChart";
 import MetricCard from "@/components/core/metricCard";
+import StreamsTable from "@/components/tables/streamsTable";
 import Image from "next/image";
 
 export default function Home() {
@@ -34,6 +35,7 @@ export default function Home() {
       <GrowthChart />
       <DonutChart />
       <ListChart />
+      <StreamsTable />
     </div>
   );
 }
