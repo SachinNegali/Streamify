@@ -19,11 +19,12 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 90, fill: "var(--color-other)" },
+  { browser: "Subscriptions ", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "Advertising", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "Donations", visitors: 182, fill: "var(--color-firefox)" },
+  //   { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
+  //   { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
+  //   { browser: "other", visitors: 90, fill: "var(--color-other)" },
 ];
 
 const chartConfig = {
@@ -62,7 +63,7 @@ const DonutChart = () => {
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-h-[360px]"
         >
           <PieChart>
             <ChartTooltip
