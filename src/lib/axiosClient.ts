@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "http://localhost:8082/",
+  baseURL: "https://dummyserver-wr9r.onrender.com/",
+  // "http://localhost:8082/",
 });
 
 axiosClient.interceptors.request.use(
