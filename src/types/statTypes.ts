@@ -22,6 +22,7 @@ export interface TopChart {
 export interface Revenue {
   source: string;
   revenue: number;
+  fill: string;
 }
 
 export interface Streams {
@@ -33,7 +34,15 @@ export interface Streams {
 }
 
 export interface StatsDataState {
-  streamStats: StreamStats | {};
+  streamStats:
+    | StreamStats
+    | {
+        totalUsers: 0;
+        activeUsers: 0;
+        totalStreams: 0;
+        revenue: 0;
+        topArtist: "";
+      };
   users: Users[];
   topCharts: TopChart[];
   streams: Streams[];

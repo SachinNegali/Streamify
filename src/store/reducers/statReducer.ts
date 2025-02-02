@@ -9,7 +9,13 @@ import {
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: StatsDataState = {
-  streamStats: {},
+  streamStats: {
+    totalUsers: 0,
+    activeUsers: 0,
+    totalStreams: 0,
+    revenue: 0,
+    topArtist: "",
+  },
   users: [],
   topCharts: [],
   streams: [],
@@ -22,7 +28,7 @@ const statSlice = createSlice({
   name: "stats",
   initialState,
   reducers: {
-    setStreamStats: (state, action: PayloadAction<StreamStats[]>) => {
+    setStreamStats: (state, action: PayloadAction<StreamStats>) => {
       state.streamStats = action.payload;
     },
     setUsers: (state, action: PayloadAction<Users[]>) => {

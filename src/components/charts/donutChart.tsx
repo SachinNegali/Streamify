@@ -18,44 +18,36 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-const chartData = [
-  { browser: "Subscriptions ", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "Advertising", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "Donations", visitors: 182, fill: "var(--color-firefox)" },
-];
+import { PieChartProps } from "@/types/componentTypes";
 
 const chartConfig = {
   visitors: {
     label: "Visitors",
   },
-  chrome: {
-    label: "Chrome",
+  subscriptions: {
+    label: "Subscriptions",
     color: "hsl(var(--chart-1))",
   },
-  safari: {
-    label: "Safari",
+  advertising: {
+    label: "Advertising",
     color: "hsl(var(--chart-2))",
   },
-  firefox: {
-    label: "Firefox",
+  donations: {
+    label: "Donations",
     color: "hsl(var(--chart-3))",
-  },
-  edge: {
-    label: "Edge",
-    color: "hsl(var(--chart-4))",
-  },
-  other: {
-    label: "Other",
-    color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig;
 
-const DonutChart = () => {
+const DonutChart = ({ data }: PieChartProps) => {
   return (
     <Card className="flex flex-col">
-      <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart - Donut Active</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+      <CardHeader>
+        <CardTitle>Revenue Distribution</CardTitle>
+        <CardDescription>
+          <div className="flex items-center gap-2 font-medium leading-none">
+            Increased by 10% this month <TrendingUp className="h-4 w-4" />
+          </div>
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -68,9 +60,9 @@ const DonutChart = () => {
               content={<ChartTooltipContent hideLabel />}
             />
             <Pie
-              data={chartData}
-              dataKey="visitors"
-              nameKey="browser"
+              data={data}
+              dataKey="revenue"
+              nameKey="source"
               innerRadius={60}
               strokeWidth={5}
               activeIndex={0}
@@ -84,13 +76,19 @@ const DonutChart = () => {
           </PieChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
+      <CardFooter className="flex flex-col md:flex-row lg:flex-row gap-2 text-sm justify-between">
+        {data.map(({ source, fill }) => (
+          <div
+            className="flex items-center self-end gap-2 font-medium leading-none"
+            key={source}
+          >
+            <div
+              className={`h-3 w-3 rounded-sm`}
+              style={{ backgroundColor: fill }}
+            />
+            {source}
+          </div>
+        ))}
       </CardFooter>
     </Card>
   );

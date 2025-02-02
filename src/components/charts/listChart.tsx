@@ -24,6 +24,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { BarChartProps } from "@/types/componentTypes";
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
   { month: "February", desktop: 305, mobile: 200 },
@@ -33,31 +34,27 @@ const chartData = [
 ];
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  streams: {
+    label: "Artist",
     color: "hsl(var(--chart-1))",
   },
-  mobile: {
-    label: "Mobile",
-    color: "hsl(var(--chart-2))",
-  },
   label: {
-    color: "hsl(var(--background))",
+    color: "hsl(var(--foreground))",
   },
 } satisfies ChartConfig;
 
-const ListChart = () => {
+const ListChart = ({ data }: BarChartProps) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart - Custom Label</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Most Streamed Songs</CardTitle>
+        <CardDescription>In last 30 days</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart
             accessibilityLayer
-            data={chartData}
+            data={data}
             layout="vertical"
             margin={{
               right: 16,
@@ -65,7 +62,7 @@ const ListChart = () => {
           >
             <CartesianGrid horizontal={false} />
             <YAxis
-              dataKey="month"
+              dataKey="song"
               type="category"
               tickLine={false}
               tickMargin={10}
@@ -73,26 +70,26 @@ const ListChart = () => {
               tickFormatter={(value) => value.slice(0, 3)}
               hide
             />
-            <XAxis dataKey="desktop" type="number" hide />
+            <XAxis dataKey="streams" type="number" hide />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
+              content={<ChartTooltipContent indicator="line" nameKey="apple" />}
             />
             <Bar
-              dataKey="desktop"
+              dataKey="streams"
               layout="vertical"
-              fill="var(--color-desktop)"
+              fill="var(--color-streams)"
               radius={4}
             >
               <LabelList
-                dataKey="month"
+                dataKey="song"
                 position="insideLeft"
                 offset={8}
                 className="fill-[--color-label]"
                 fontSize={12}
               />
               <LabelList
-                dataKey="desktop"
+                dataKey="streams"
                 position="right"
                 offset={8}
                 className="fill-foreground"
@@ -102,14 +99,6 @@ const ListChart = () => {
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   );
 };
