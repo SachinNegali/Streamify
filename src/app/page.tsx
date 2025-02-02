@@ -1,3 +1,6 @@
+import DonutChart from "@/components/charts/donutChart";
+import GrowthChart from "@/components/charts/growthChart";
+import ListChart from "@/components/charts/listChart";
 import MetricCard from "@/components/core/metricCard";
 import Image from "next/image";
 
@@ -27,6 +30,10 @@ export default function Home() {
           subtitle="This is what I mean"
         />
       </div>
+
+      <GrowthChart />
+      <DonutChart />
+      <ListChart />
     </div>
   );
 }
