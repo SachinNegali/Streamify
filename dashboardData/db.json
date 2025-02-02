@@ -2575,7 +2575,7 @@
       "userId": "user19"
     }
   ],
-  "stats": {
+  "streamStats": {
     "totalUsers": 103045,
     "activeUsers": 454,
     "totalStreams": 34654562,

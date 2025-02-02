@@ -56,6 +56,12 @@ const invoices = [
 ];
 
 const StreamsTable = () => {
+  // Song Name
+  // Artist
+  // Date Streamed
+  // Stream Count
+  // User ID
+
   return (
     <Card className="p-4">
       <Table>

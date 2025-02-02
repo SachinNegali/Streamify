@@ -22,9 +22,6 @@ const chartData = [
   { browser: "Subscriptions ", visitors: 275, fill: "var(--color-chrome)" },
   { browser: "Advertising", visitors: 200, fill: "var(--color-safari)" },
   { browser: "Donations", visitors: 182, fill: "var(--color-firefox)" },
-  //   { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
-  //   { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  //   { browser: "other", visitors: 90, fill: "var(--color-other)" },
 ];
 
 const chartConfig = {
