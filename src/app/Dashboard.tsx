@@ -17,6 +17,7 @@ import LoadingIndicator from "@/components/core/loadingIndicator";
 import StreamStats from "@/components/streamStats/streamStats";
 import DonutChart from "@/components/charts/donutChart";
 import ListChart from "@/components/charts/listChart";
+import Link from "next/link";
 const GrowthChart = lazy(() => import("@/components/charts/growthChart"));
 const StreamsTable = lazy(() => import("@/components/tables/streamsTable"));
 
@@ -32,9 +33,7 @@ const Dashboard = () => {
     dispatch(getRevenue());
     dispatch(getStreams());
   }, [dispatch]);
-
   console.log(loading, error);
-
   return (
     <div className="flex flex-col justify-items-center min-h-screen p-8 pb-20 gap-6 font-[family-name:var(--font-geist-sans)]">
       <p className="text-2xl font-bold self-start">Streamify</p>
@@ -51,6 +50,14 @@ const Dashboard = () => {
       <Suspense fallback={<LoadingIndicator />}>
         <StreamsTable data={streams} />
       </Suspense>
+
+      <a
+        className="text-right text-sm underline text-blue-700"
+        href="https://streamify-git-main-sachinnegalis-projects.vercel.app/"
+        target="_blank"
+      >
+        Hosted Link (Vercel)
+      </a>
     </div>
   );
 };

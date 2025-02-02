@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "node startServer.js",
+    "lint": "next lint",
+    "json-server": "npx json-server -p 8082 -w dashboardData/db.json"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.1.5",
