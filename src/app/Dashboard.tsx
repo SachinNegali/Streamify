@@ -31,7 +31,9 @@ const Dashboard = () => {
     dispatch(getTopCharts());
     dispatch(getRevenue());
     dispatch(getStreams());
-  }, []);
+  }, [dispatch]);
+
+  console.log(loading, error);
 
   return (
     <div className="flex flex-col justify-items-center min-h-screen p-8 pb-20 gap-6 font-[family-name:var(--font-geist-sans)]">

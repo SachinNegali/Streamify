@@ -46,6 +46,7 @@ const statSlice = createSlice({
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
+    /* eslint-disable-next-line  @typescript-eslint/no-explicit-any */
     setError: (state, action: PayloadAction<any>) => {
       state.error = action.payload;
     },

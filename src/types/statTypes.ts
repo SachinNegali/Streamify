@@ -33,6 +33,11 @@ export interface Streams {
   userId: string;
 }
 
+export interface Error {
+  error: string;
+  message: string;
+}
+
 export interface StatsDataState {
   streamStats:
     | StreamStats
@@ -48,5 +53,5 @@ export interface StatsDataState {
   streams: Streams[];
   revenue: Revenue[];
   loading: boolean;
-  error: any;
+  error: Error | null;
 }
